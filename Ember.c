@@ -43,7 +43,7 @@ static void Ember(char* filename,char* varname) {
 	if (bt==NULL) { printf("// Error opening file\n");  return; }
 	int size = streamsize(bt);
 	printf("\n\n\nstatic const int %s_SIZE = %10d;\n\n",varname, size);
-	printf("static const char[%d] %s = {\n\t",size,varname);
+	printf("static const char %s [%10d] = {\n\t",varname,size);
 	for (int i=0;i<size;i++) {
 		char c = fgetc(bt);
 		if (i) printf(", ");
@@ -53,7 +53,7 @@ static void Ember(char* filename,char* varname) {
 		else
 			printf("%4d",c);		
 	}
-	printf("\n}\n\n");
+	printf("\n};\n\n");
 	fclose(bt);
 }
 
